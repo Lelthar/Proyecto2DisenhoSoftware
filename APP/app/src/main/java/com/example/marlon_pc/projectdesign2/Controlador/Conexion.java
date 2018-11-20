@@ -1,6 +1,7 @@
-package com.example.marlon_pc.projectdesign2;
+package com.example.marlon_pc.projectdesign2.Controlador;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -47,6 +48,7 @@ public class Conexion extends AsyncTask<String, Void, String> {
             else{
                 conn.setRequestMethod(strings[1]);
                 conn.setRequestProperty("Content-Type","application/json");
+                //Log.i("CODIGO REQUEST", String.valueOf(conn.getResponseCode()));
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     StringBuilder jsonResponse = new StringBuilder();
                     BufferedReader input = new BufferedReader(new InputStreamReader(conn.getInputStream()));
