@@ -1,0 +1,4 @@
+INSERT INTO  Lesion(codigoLesion,nombreLesion) VALUES(0,"Herido leve");
+INSERT INTO  Lesion(codigoLesion,nombreLesion) VALUES(1,"Ileso");
+INSERT INTO  Lesion(codigoLesion,nombreLesion) VALUES(2,"Herido grave");
+INSERT INTO  Lesion(codigoLesion,nombreLesion) VALUES(3,"Muerte");

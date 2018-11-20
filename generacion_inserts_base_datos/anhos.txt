@@ -1,0 +1,3 @@
+INSERT INTO  Anho(codigoAnho,nombreAnho) VALUES(0,"2012");
+INSERT INTO  Anho(codigoAnho,nombreAnho) VALUES(1,"2013");
+INSERT INTO  Anho(codigoAnho,nombreAnho) VALUES(2,"2014");

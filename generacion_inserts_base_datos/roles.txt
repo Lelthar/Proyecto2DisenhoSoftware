@@ -1,0 +1,10 @@
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(0,"Peatón");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(1,"Motociclista");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(2,"Conductor");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(3,"Pasajero Moto");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(4,"Pasajero Carro");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(5,"Dueño de Propiedad");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(6,"Pasajero Bus o Microbús");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(7,"Pasajero Bicicleta");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(8,"Ciclista");
+INSERT INTO  Rol(codigoRol,nombreRol) VALUES(9,"Otro");

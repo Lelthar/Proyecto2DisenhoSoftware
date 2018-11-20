@@ -1,0 +1,3 @@
+INSERT INTO  Sexo(codigoSexo,nombreSexo) VALUES(0,"Mujer");
+INSERT INTO  Sexo(codigoSexo,nombreSexo) VALUES(1,"Hombre");
+INSERT INTO  Sexo(codigoSexo,nombreSexo) VALUES(2,"Desconocido");

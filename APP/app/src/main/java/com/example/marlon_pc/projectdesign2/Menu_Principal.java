@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.marlon_pc.projectdesign2.Vista.ComportamientoFragment;
 import com.example.marlon_pc.projectdesign2.Vista.DinamicaFragment;
+import com.example.marlon_pc.projectdesign2.Vista.VacacionesFragment;
 
 public class Menu_Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -85,10 +87,10 @@ public class Menu_Principal extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
                 break;
             case R.id.nav_comportamiento:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ComportamientoFragment()).commit();
                 break;
             case R.id.nav_vacaciones:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new VacacionesFragment()).commit();
                 break;
 
         }

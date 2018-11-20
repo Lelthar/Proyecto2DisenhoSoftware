@@ -1,0 +1,7 @@
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(0,"Lunes");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(1,"Domingo");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(2,"Jueves");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(3,"Martes");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(4,"Miércoles");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(5,"Sábado");
+INSERT INTO  Dia(codigoDia,nombreDia) VALUES(6,"Viernes");

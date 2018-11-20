@@ -1,0 +1,7 @@
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(0,"San José");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(1,"Alajuela");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(2,"Cartago");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(3,"Guanacaste");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(4,"Heredia");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(5,"Limón");
+INSERT INTO  Provincia(codigoProvincia,nombreProvincia) VALUES(6,"Puntarenas");
