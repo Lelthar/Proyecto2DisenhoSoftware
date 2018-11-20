@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.marlon_pc.projectdesign2.Vista.DinamicaFragment;
+
 public class Menu_Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -20,17 +22,24 @@ public class Menu_Principal extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__principal);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_dinamica);
+        }
+
     }
 
     @Override
@@ -71,15 +80,20 @@ public class Menu_Principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
+        switch (id) {
+            case R.id.nav_dinamica:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+                break;
+            case R.id.nav_comportamiento:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+                break;
+            case R.id.nav_vacaciones:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
+                break;
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

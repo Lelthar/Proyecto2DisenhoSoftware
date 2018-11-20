@@ -14,7 +14,7 @@ public class DTOConsulta {
         this.tipo = tipo;
         this.entrada = entrada;
         this.anhos = anhos;
-        this.resultado = new Resultado();
+        //this.resultado = new Resultado();
     }
 
     public String getTipo() {
