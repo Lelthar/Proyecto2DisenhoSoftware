@@ -38,7 +38,7 @@ public class DinamicaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String entrada = "";
-                entrada += editText.getText().toString();
+                entrada += editText.getText();
                 if(!entrada.equals("")){
                     //String p = "Por ejemplo, se podría seleccionar Cartago y Heredia como provincia, donde interesa Cartago y Acosta y estar interesado en ver los accidentes de tránsito que involucraron peatones en el rol de afectado que salieron ilesos en el tipo de lesión y que fueron mujeres en el indicador de sexo para el año 2012, con una edades de 12, 17, y 18.";
                     //p = p.replaceAll(" ","%20");

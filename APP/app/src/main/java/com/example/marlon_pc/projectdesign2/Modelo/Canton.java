@@ -10,9 +10,9 @@ public class Canton extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreCanton='"+this.valor+"'";
+            inner = " nombreCanton='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreCanton='"+this.valor+"'";
+            inner = " nombreCanton='"+this.valor+"' AND";
         }else {
             inner = " nombreCanton='" + this.valor + "'";
         }

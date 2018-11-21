@@ -24,7 +24,7 @@ public class ConexionWatson extends AsyncTask<String, Void, String>{
 
             conn.setRequestMethod(strings[1]);
             conn.setRequestProperty("Content-Type","application/json");
-            Log.i("CODIGO REQUEST", String.valueOf(conn.getResponseCode()));
+            //Log.i("CODIGO REQUEST", String.valueOf(conn.getResponseCode()));
             if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 StringBuilder jsonResponse = new StringBuilder();
                 BufferedReader input = new BufferedReader(new InputStreamReader(conn.getInputStream()));

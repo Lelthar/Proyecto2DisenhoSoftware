@@ -49,25 +49,43 @@ public class GestorEntidades {
      */
     public boolean procesarResultados(String entidades){
         try {
-            System.out.println(entidades);
-            JSONObject JsonObjecto = new JSONObject(entidades);
-            String sad = JsonObjecto.getString("entities");
-            JSONArray datos = new JSONArray(sad);
-            JSONObject elemento;
-            Entidad entidad;
-            for(int i=0;i<datos.length();i++){
-                elemento = datos.getJSONObject(i);
-                String tipo = elemento.getString("type");
-                String text = elemento.getString("text");
-                entidad = new Entidad(tipo,text);
-                this.listaEntidades.add(entidad);
+            //System.out.println(entidades);
+            if(!entidades.equals("Error")){
+                JSONObject JsonObjecto = new JSONObject(entidades);
+                String sad = JsonObjecto.getString("entities");
+                JSONArray datos = new JSONArray(sad);
+                JSONObject elemento;
+                Entidad entidad;
+                for(int i=0;i<datos.length();i++){
+                    elemento = datos.getJSONObject(i);
+                    String tipo = elemento.getString("type");
+                    String text = elemento.getString("text");
+                    entidad = new Entidad(tipo,text);
+                    this.listaEntidades.add(entidad);
+                }
+                ordenarResultados();
+                //System.out.println(this.listaEntidades.toString());
+                return true;
+            }else{
+                return false;
             }
-            System.out.println(this.listaEntidades.toString());
-            return true;
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void ordenarResultados(){
+         ArrayList<Entidad> result = new ArrayList<>();
+         String[] categorias = {"Provincia", "Cantones", "Distritos","Anho","Mes","Dia","Rol","Genero","TipoLesion","Edad"};
+         for(int i=0;i<categorias.length;i++){
+             for(Entidad entidad : this.listaEntidades){
+                if(entidad.getTipo().equals(categorias[i])){
+                    result.add(entidad);
+                }
+             }
+         }
+        this.listaEntidades=result;
     }
 
     @Override

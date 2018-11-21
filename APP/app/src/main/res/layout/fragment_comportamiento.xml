@@ -28,6 +28,7 @@
         android:popupBackground="#d1cac5"/>
 
     <Button
+        android:id="@+id/botonComportamiento"
         android:layout_below="@+id/spinner_comportamiento"
         android:layout_width="70dp"
         android:layout_height="70dp"

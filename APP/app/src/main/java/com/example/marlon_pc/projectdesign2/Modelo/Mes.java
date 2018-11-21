@@ -10,9 +10,9 @@ public class Mes extends DecoradorConsulta{
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreMes='"+this.valor+"'";
+            inner = " nombreMes='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreMes='"+this.valor+"'";
+            inner = " nombreMes='"+this.valor+"' AND";
         }else {
             inner = " nombreMes='" + this.valor + "'";
         }

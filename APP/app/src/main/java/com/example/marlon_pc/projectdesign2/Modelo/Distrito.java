@@ -10,9 +10,9 @@ public class Distrito extends DecoradorConsulta{
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreDistrito='"+this.valor+"'";
+            inner = " nombreDistrito='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreDistrito='"+this.valor+"'";
+            inner = " nombreDistrito='"+this.valor+"' AND";
         }else {
             inner = " nombreDistrito='" + this.valor + "'";
         }

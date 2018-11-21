@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class ComportamientoFragment extends Fragment {
     private View rootView;
     private static final String[] categorias = {"Provincias", "Cantones", "Distritos"};
     private Spinner spinner;
+    private Button button;
 
     @Nullable
     @Override
@@ -29,11 +31,19 @@ public class ComportamientoFragment extends Fragment {
 
         spinner = rootView.findViewById(R.id.spinner_comportamiento);
 
+        button = rootView.findViewById(R.id.botonComportamiento);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), R.layout.spinner_item, categorias);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         spinner.setAdapter(adapter);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         return rootView;
     }

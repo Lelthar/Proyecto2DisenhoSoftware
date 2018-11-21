@@ -9,9 +9,9 @@ public class Anho extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreAnho='"+this.valor+"'";
+            inner = " nombreAnho='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreAnho='"+this.valor+"'";
+            inner = " nombreAnho='"+this.valor+"' AND";
         }else {
             inner = " nombreAnho='" + this.valor + "'";
         }
