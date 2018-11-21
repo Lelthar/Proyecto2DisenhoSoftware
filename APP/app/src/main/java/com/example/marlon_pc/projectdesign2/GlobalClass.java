@@ -34,6 +34,6 @@ public class GlobalClass {
     public static final String All_LESIONES = URL_HOST + "valores/getAllLesiones.php";
     public static final String All_ROLES = URL_HOST + "valores/getAllRoles.php";
 
-
+    public static final String GET_CONSULTA = URL_HOST + "consultas/consulta.php";
 }
 
