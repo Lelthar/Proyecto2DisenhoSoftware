@@ -9,14 +9,13 @@ package com.example.marlon_pc.projectdesign2.Modelo;
  *
  * @author josed
  */
-public class ConsultaDinamica implements Consulta{
+public class ConsultaDinamica implements Consulta {
     
     private String consulta;
-    
-    @Override
-    public void agregar(String valor){
 
+
+    @Override
+    public String agregar(String valor) {
+        return "SELECT codigoRegistro FROM Accidente WHERE"+valor+";";
     }
-    
-    
 }

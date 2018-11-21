@@ -13,6 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.marlon_pc.projectdesign2.Modelo.Canton;
+import com.example.marlon_pc.projectdesign2.Modelo.Consulta;
+import com.example.marlon_pc.projectdesign2.Modelo.ConsultaDinamica;
+import com.example.marlon_pc.projectdesign2.Modelo.Edad;
+import com.example.marlon_pc.projectdesign2.Modelo.Provincia;
 import com.example.marlon_pc.projectdesign2.Vista.ComportamientoFragment;
 import com.example.marlon_pc.projectdesign2.Vista.DinamicaFragment;
 import com.example.marlon_pc.projectdesign2.Vista.VacacionesFragment;
@@ -84,6 +89,9 @@ public class Menu_Principal extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_dinamica:
+                Consulta consulta = new Provincia("Cartago","0" , new Canton("Heredia","2",new Edad("12","2", new ConsultaDinamica())));
+                String a = consulta.agregar("");
+                System.out.println(a);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
                 break;
             case R.id.nav_comportamiento:

@@ -15,7 +15,7 @@ import com.example.marlon_pc.projectdesign2.R;
 
 public class VacacionesFragment extends Fragment {
     private View rootView;
-    private static final String[] periodos = {"Provincias", "Cantones", "Distritos"};
+    private static final String[] periodos = {"Verano", "SemanaSanta", "Mediados"};
     private static final String[] anhos = {"2012", "2013", "2014"};
     private Spinner spinner_periodos;
     private Spinner spinner_anhos;

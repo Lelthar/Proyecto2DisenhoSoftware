@@ -48,8 +48,8 @@ public class GestorEntidades {
      * @return
      */
     public boolean procesarResultados(String entidades){
-        Log.i("CONSULTA","-.-");
         try {
+            System.out.println(entidades);
             JSONObject JsonObjecto = new JSONObject(entidades);
             String sad = JsonObjecto.getString("entities");
             JSONArray datos = new JSONArray(sad);
@@ -62,6 +62,7 @@ public class GestorEntidades {
                 entidad = new Entidad(tipo,text);
                 this.listaEntidades.add(entidad);
             }
+            System.out.println(this.listaEntidades.toString());
             return true;
         } catch (JSONException e) {
             e.printStackTrace();

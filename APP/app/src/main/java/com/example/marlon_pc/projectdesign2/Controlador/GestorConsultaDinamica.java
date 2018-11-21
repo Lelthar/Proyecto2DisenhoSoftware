@@ -3,6 +3,8 @@ package com.example.marlon_pc.projectdesign2.Controlador;
 import android.util.Log;
 
 import com.example.marlon_pc.projectdesign2.Modelo.Consulta;
+import com.example.marlon_pc.projectdesign2.Modelo.ConsultaDinamica;
+import com.example.marlon_pc.projectdesign2.Modelo.Provincia;
 
 public class GestorConsultaDinamica implements GestorConsulta{
     private GestorEntidades gestorEntidades;
@@ -23,9 +25,9 @@ public class GestorConsultaDinamica implements GestorConsulta{
     public String efectuarConsulta(DTOConsulta dto) {
         if(gestorEntidades.obtenerEntidades(dto.getEntrada())){
             if(validar()){
-
+                System.out.println(gestorEntidades);
             }
-            Log.i("Lista Valores:",gestorEntidades.toString());
+            //Log.i("Lista Valores:",gestorEntidades.toString());
         }else{
             return "Problema Watson";
         }
@@ -34,6 +36,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
 
     @Override
     public Consulta construirConsulta() {
+
         return null;
     }
 
