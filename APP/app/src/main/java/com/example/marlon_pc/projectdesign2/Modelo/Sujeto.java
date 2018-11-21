@@ -30,13 +30,32 @@ public class Sujeto {
         
         FALTA METODO NOTIFYALLOBSERVERS
         */
-        
-        
+
+
+
+
 	public void agregarObservador(Observador observador){
 
 		this.observadores.add(observador);
 	}
 
+	public boolean eliminarObservador(Class clase ){
+
+	    Observador observadorTemporal;
+	    for(int i = 0 ; i < this.observadores.size(); i++){
+
+	        observadorTemporal = this.observadores.get(i);
+	        if(observadorTemporal.getClass() == clase){
+
+	            this.observadores.remove(observadorTemporal);
+	            return true;
+            }
+
+        }
+        return false;
+
+
+    }
 	public boolean eliminarObservador(int indice){
 
 		try{
@@ -51,12 +70,24 @@ public class Sujeto {
                 }
 
 	}
-        
-        public Resultado ejecutar(Resultado resultado){
-            
-        
-        return null;
+
+	public Resultado ejecutar(Resultado resultado){
+
+	    return null;
+	}
+
+	public String Imprimir(){
+
+	    String resultado = "";
+
+	    for(Observador observador: this.observadores){
+
+	        resultado += observador.getClass();
         }
+        System.out.println(resultado);
+	    return resultado;
+    }
+
 
     
 }

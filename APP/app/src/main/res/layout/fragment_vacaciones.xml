@@ -2,70 +2,124 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/fondoVentanas">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoVentanas"
+    android:visibility="visible">
+
+    <CheckBox
+        android:id="@+id/checkBox2013"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="131dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="2013" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSemanaSanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxVerano"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toEndOf="@+id/checkBoxMediados"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Semana Santa" />
+
+    <CheckBox
+        android:id="@+id/checkBox2014"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="-100dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="2014" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMediados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBoxVerano"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="9dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Mediados" />
+
+    <CheckBox
+        android:id="@+id/checkBoxVerano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titulo_vacaciones"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="124dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Verano" />
 
     <TextView
         android:id="@+id/titulo_vacaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="226dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Periodo"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 
 
-    <Spinner
-        android:id="@+id/spinner_vacaciones"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/titulo_vacaciones"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="#b1a090"
-        android:popupBackground="#d1cac5"
-        android:textAlignment="center"
-        android:gravity="center"/>
-
     <TextView
         android:id="@+id/titulo_anho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/spinner_vacaciones"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="171dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="170dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Año"
         android:textColor="@android:color/black"
-        android:layout_below="@+id/spinner_vacaciones"
         android:textSize="24sp" />
 
-
-    <Spinner
-        android:id="@+id/spinner_anho"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/titulo_anho"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="#b1a090"
-        android:popupBackground="#d1cac5"
-        android:gravity="center"/>
 
     <Button
         android:id="@+id/buttonConsultaVacaciones"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_below="@+id/spinner_anho"
-        android:layout_centerHorizontal="true"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/circular_button"
         android:drawableTop="@drawable/ic_google_play2"
         android:paddingLeft="10dp"
         android:paddingTop="7dp"
         android:textColor="#fff" />
+
+    <CheckBox
+        android:id="@+id/checkBox2012"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/titulo_vacaciones"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="115dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="2012" />
 
 </RelativeLayout>
