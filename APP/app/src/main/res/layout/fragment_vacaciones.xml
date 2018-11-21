@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/fondoVentanas">
 
@@ -55,15 +56,16 @@
         android:gravity="center"/>
 
     <Button
-        android:layout_below="@+id/spinner_anho"
+        android:id="@+id/buttonConsultaVacaciones"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_below="@+id/spinner_anho"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:background="@drawable/circular_button"
         android:drawableTop="@drawable/ic_google_play2"
-        android:paddingTop="7dp"
         android:paddingLeft="10dp"
+        android:paddingTop="7dp"
         android:textColor="#fff" />
 
 </RelativeLayout>
