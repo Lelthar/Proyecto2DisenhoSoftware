@@ -10,9 +10,9 @@ public class Edad extends DecoradorConsulta  {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR edad="+this.valor;
+            inner = " edad='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND edad="+this.valor;
+            inner = " edad='"+this.valor+"') AND (";
         }else {
             inner = " edad=" + this.valor;
         }

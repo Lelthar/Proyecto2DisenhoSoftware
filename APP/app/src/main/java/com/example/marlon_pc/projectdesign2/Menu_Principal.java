@@ -89,9 +89,6 @@ public class Menu_Principal extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_dinamica:
-                Consulta consulta = new Provincia("Cartago","0" , new Canton("Heredia","2",new Edad("12","2", new ConsultaDinamica())));
-                String a = consulta.agregar("");
-                System.out.println(a);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
                 break;
             case R.id.nav_comportamiento:

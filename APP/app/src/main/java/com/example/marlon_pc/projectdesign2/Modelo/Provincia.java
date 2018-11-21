@@ -22,9 +22,9 @@ public class Provincia extends DecoradorConsulta{
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreProvincia='"+this.valor+"'";
+            inner = " nombreProvincia='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreProvincia='"+this.valor+"'";
+            inner = " nombreProvincia='"+this.valor+"') AND (";
         }else{
             inner = " nombreProvincia='"+this.valor+"'";
         }

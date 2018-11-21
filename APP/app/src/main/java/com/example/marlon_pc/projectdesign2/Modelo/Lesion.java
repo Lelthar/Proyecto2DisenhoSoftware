@@ -10,9 +10,9 @@ public class Lesion extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreLesion='"+this.valor+"'";
+            inner = " nombreLesion='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreLesion='"+this.valor+"'";
+            inner = " nombreLesion='"+this.valor+"') AND (";
         }else {
             inner = " nombreLesion='" + this.valor + "'";
         }

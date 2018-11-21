@@ -10,9 +10,9 @@ public class Sexo extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreSexo='"+this.valor+"'";
+            inner = " nombreSexo='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreSexo='"+this.valor+"'";
+            inner = " nombreSexo='"+this.valor+"') AND (";
         }else {
             inner = " nombreSexo='" + this.valor + "'";
         }

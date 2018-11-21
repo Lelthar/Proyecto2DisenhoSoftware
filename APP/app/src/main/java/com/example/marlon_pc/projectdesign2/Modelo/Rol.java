@@ -9,9 +9,9 @@ public class Rol extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreRol='"+this.valor+"'";
+            inner = " nombreRol='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreRol='"+this.valor+"'";
+            inner = " nombreRol='"+this.valor+"') AND (";
         }else {
             inner = " nombreRol='" + this.valor + "'";
         }

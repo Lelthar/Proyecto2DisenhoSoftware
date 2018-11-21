@@ -10,9 +10,9 @@ public class Dia extends DecoradorConsulta {
         int lvl = Integer.parseInt(this.nivel);
         String inner ="";
         if(lvl==1){
-            inner = " OR nombreDia='"+this.valor+"'";
+            inner = " nombreDia='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " AND nombreDiao='"+this.valor+"'";
+            inner = " nombreDiao='"+this.valor+"') AND (";
         }else {
             inner = " nombreDia='" + this.valor + "'";
         }
