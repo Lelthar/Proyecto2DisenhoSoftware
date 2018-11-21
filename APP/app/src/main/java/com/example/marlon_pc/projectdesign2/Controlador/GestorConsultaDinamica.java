@@ -50,7 +50,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
                 String valores = consultar(consul);
 
                 if(!valores.equals("Error")){
-                    System.out.println(valores);
+                    //System.out.println(valores);
                     /*
                     try {
                         JSONObject JsonObjecto = new JSONObject(valores);

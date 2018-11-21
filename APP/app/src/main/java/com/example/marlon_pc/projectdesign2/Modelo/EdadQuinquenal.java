@@ -12,7 +12,7 @@ public class EdadQuinquenal extends  DecoradorConsulta {
         if(lvl==1){
             inner = " edadQuinquenal='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " edadQuinquenal='"+this.valor+"' AND";
+            inner = " edadQuinquenal='"+this.valor+"') AND (";
         }else {
             inner = " edadQuinquenal='" + this.valor + "'";
         }

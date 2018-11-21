@@ -12,7 +12,7 @@ public class Mes extends DecoradorConsulta{
         if(lvl==1){
             inner = " nombreMes='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreMes='"+this.valor+"' AND";
+            inner = " nombreMes='"+this.valor+"') AND (";
         }else {
             inner = " nombreMes='" + this.valor + "'";
         }

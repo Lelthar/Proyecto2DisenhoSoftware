@@ -11,7 +11,7 @@ public class Anho extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreAnho='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreAnho='"+this.valor+"' AND";
+            inner = " nombreAnho='"+this.valor+"') AND (";
         }else {
             inner = " nombreAnho='" + this.valor + "'";
         }

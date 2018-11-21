@@ -12,7 +12,7 @@ public class Edad extends DecoradorConsulta  {
         if(lvl==1){
             inner = " edad='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " edad='"+this.valor+"' AND";
+            inner = " edad='"+this.valor+"') AND (";
         }else {
             inner = " edad=" + this.valor;
         }

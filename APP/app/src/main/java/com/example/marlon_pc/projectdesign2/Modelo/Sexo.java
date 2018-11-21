@@ -12,7 +12,7 @@ public class Sexo extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreSexo='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreSexo='"+this.valor+"' AND";
+            inner = " nombreSexo='"+this.valor+"') AND (";
         }else {
             inner = " nombreSexo='" + this.valor + "'";
         }

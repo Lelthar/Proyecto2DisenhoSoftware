@@ -12,7 +12,7 @@ public class Lesion extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreLesion='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreLesion='"+this.valor+"' AND";
+            inner = " nombreLesion='"+this.valor+"') AND (";
         }else {
             inner = " nombreLesion='" + this.valor + "'";
         }

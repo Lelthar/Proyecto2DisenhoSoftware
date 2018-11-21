@@ -12,7 +12,7 @@ public class Canton extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreCanton='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreCanton='"+this.valor+"' AND";
+            inner = " nombreCanton='"+this.valor+"') AND (";
         }else {
             inner = " nombreCanton='" + this.valor + "'";
         }

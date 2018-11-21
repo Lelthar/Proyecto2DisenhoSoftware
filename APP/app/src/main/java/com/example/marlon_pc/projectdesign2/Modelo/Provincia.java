@@ -24,7 +24,7 @@ public class Provincia extends DecoradorConsulta{
         if(lvl==1){
             inner = " nombreProvincia='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreProvincia='"+this.valor+"' AND";
+            inner = " nombreProvincia='"+this.valor+"') AND (";
         }else{
             inner = " nombreProvincia='"+this.valor+"'";
         }

@@ -12,7 +12,7 @@ public class Distrito extends DecoradorConsulta{
         if(lvl==1){
             inner = " nombreDistrito='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreDistrito='"+this.valor+"' AND";
+            inner = " nombreDistrito='"+this.valor+"') AND (";
         }else {
             inner = " nombreDistrito='" + this.valor + "'";
         }

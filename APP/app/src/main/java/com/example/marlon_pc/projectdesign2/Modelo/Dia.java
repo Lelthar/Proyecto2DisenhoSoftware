@@ -12,7 +12,7 @@ public class Dia extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreDia='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreDiao='"+this.valor+"' AND";
+            inner = " nombreDiao='"+this.valor+"') AND (";
         }else {
             inner = " nombreDia='" + this.valor + "'";
         }

@@ -14,11 +14,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.marlon_pc.projectdesign2.Controlador.Controlador;
+import com.example.marlon_pc.projectdesign2.Controlador.DTOConsulta;
 import com.example.marlon_pc.projectdesign2.R;
+
+import java.util.ArrayList;
 
 public class ComportamientoFragment extends Fragment {
     private View rootView;
-    private static final String[] categorias = {"Provincias", "Cantones", "Distritos"};
+    private static final String[] categorias = {"Provincias", "Cantones", "Distritos","Meses","Anhos","Dias","Sexos","Lesiones","Roles"};
     private Spinner spinner;
     private Button button;
 
@@ -41,7 +45,10 @@ public class ComportamientoFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                String entrada = spinner.getSelectedItem().toString();
+                DTOConsulta dto = new DTOConsulta("Comportamiento",entrada,null);
+                Controlador controlador = new Controlador();
+                controlador.enviarConsulta(dto);
             }
         });
 

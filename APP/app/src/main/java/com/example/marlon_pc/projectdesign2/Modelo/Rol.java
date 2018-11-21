@@ -11,7 +11,7 @@ public class Rol extends DecoradorConsulta {
         if(lvl==1){
             inner = " nombreRol='"+this.valor+"' OR";
         }else if(lvl==2){
-            inner = " nombreRol='"+this.valor+"' AND";
+            inner = " nombreRol='"+this.valor+"') AND (";
         }else {
             inner = " nombreRol='" + this.valor + "'";
         }
