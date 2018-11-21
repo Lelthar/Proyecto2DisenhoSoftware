@@ -106,3 +106,31 @@ create table Incidente (
 	FOREIGN KEY (codigoAfectado) references Afectado(codigoAfectado)
 
 );
+
+create table IncidenteCompleto (
+
+
+	codigoRegistro int PRIMARY KEY,
+
+	nombreProvincia varchar(30),
+
+	nombreCanton varchar(100),
+
+	nombreDistrito varchar(100),
+
+	nombreAnho varchar(20),
+
+	nombreMes int,
+ 
+	nombreDia varchar(200), 
+
+	nombreSexo varchar(20),
+	nombreLesion varchar(100), 
+
+	nombreRol varchar(100),
+
+	edad int , 
+	edadQuinquinal varchar(100)
+
+
+);
