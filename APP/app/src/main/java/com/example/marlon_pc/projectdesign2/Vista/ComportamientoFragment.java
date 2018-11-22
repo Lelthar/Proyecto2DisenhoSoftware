@@ -1,5 +1,6 @@
 package com.example.marlon_pc.projectdesign2.Vista;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -51,6 +52,8 @@ public class ComportamientoFragment extends Fragment {
                 Controlador controlador = new Controlador();
                 controlador.enviarConsulta(dto);
                 System.out.println(dto.getResultado().toString());
+                Intent intent = new Intent(getActivity(),Grafico.class);
+                startActivity(intent);
             }
         });
 

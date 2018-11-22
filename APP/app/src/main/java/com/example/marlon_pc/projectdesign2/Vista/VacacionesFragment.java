@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.marlon_pc.projectdesign2.Controlador.Controlador;
 import com.example.marlon_pc.projectdesign2.Controlador.DTOConsulta;
@@ -54,6 +55,7 @@ public class VacacionesFragment extends Fragment  {
 
                 System.out.println("Ejecutar Consulta Vacaciones");
                 sujeto.Imprimir();
+                
 
                 Controlador controlador = new Controlador();
                 DTOConsulta dtoConsulta = new DTOConsulta("Vacaciones", "valores", null);

@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
         <activity
             android:name=".Menu_Principal"
             android:label="@string/title_activity_menu__principal"
@@ -33,12 +32,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_API_key" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Vista.MapaConsultaDinamica"></activity>
+        <activity android:name=".Vista.MapaConsultaDinamica" />
+        <activity android:name=".Vista.Grafico"></activity>
     </application>
 
 </manifest>
