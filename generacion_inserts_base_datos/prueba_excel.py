@@ -187,6 +187,117 @@ def parser_datos_totales_forma2(archivo):
 
 
 
+def parser_datos_tabla_completa(archivo):
+
+	excel_leer = pd.read_excel(archivo+".xlsx")
+	largo_archivo = len(excel_leer.index)
+
+	tabla_total_1_guardar= open("tabla_dios1.txt","w+")
+	tabla_total_2_guardar= open("tabla_dios2.txt","w+")
+
+	primer_linea_tabla_total = "INSERT INTO IncidenteCompleto(codigoRegistro,nombreProvincia,nombreCanton,nombreDistrito,nombreDia,nombreMes,nombreAnho,nombreRol,nombreSexo,nombreLesion,edad,edadQuinquenal) VALUES"
+	tabla_total_1_guardar.write(primer_linea_tabla_total)
+	tabla_total_2_guardar.write(primer_linea_tabla_total)
+
+	largo_1 = largo_archivo//2
+
+	largo_2 = (largo_archivo//2)+(largo_archivo%2)
+
+	contador = 0
+
+	for i in range(largo_1):
+		
+		provincia_excel = excel_leer.loc[[i]]["Provincia"][i]
+		canton_excel = excel_leer.loc[[i]]["Cantón"][i]
+		distrito_excel = excel_leer.loc[[i]]["Distrito"][i]
+		dia_excel = excel_leer.loc[[i]]["Día"][i]
+		mes_excel = excel_leer.loc[[i]]["Mes"][i]
+		anho_excel = excel_leer.loc[[i]]["Año"][i]
+		rol_excel = excel_leer.loc[[i]]["Rol"][i]
+		sexo_excel = excel_leer.loc[[i]]["Sexo"][i]
+		lesion_excel = excel_leer.loc[[i]]["Tipo de Lesión"][i]
+		edad_excel = excel_leer.loc[[i]]["Edad"][i]
+		edad_quinquenal_excel = excel_leer.loc[[i]]["Edadquinquenal"][i]
+
+		
+		insercion_tabla_zeus = "(%d,\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"),\n"%((contador+1),provincia_excel,canton_excel,distrito_excel,dia_excel,mes_excel,anho_excel,rol_excel,sexo_excel,lesion_excel,edad_excel,edad_quinquenal_excel)
+
+		tabla_total_1_guardar.write(insercion_tabla_zeus)
+
+		contador +=1
+
+	for i in range(largo_2):
+		
+		provincia_excel = excel_leer.loc[[i+contador]]["Provincia"][i+contador]
+		canton_excel = excel_leer.loc[[i+contador]]["Cantón"][i+contador]
+		distrito_excel = excel_leer.loc[[i+contador]]["Distrito"][i+contador]
+		dia_excel = excel_leer.loc[[i+contador]]["Día"][i+contador]
+		mes_excel = excel_leer.loc[[i+contador]]["Mes"][i+contador]
+		anho_excel = excel_leer.loc[[i+contador]]["Año"][i+contador]
+		rol_excel = excel_leer.loc[[i+contador]]["Rol"][i+contador]
+		sexo_excel = excel_leer.loc[[i+contador]]["Sexo"][i+contador]
+		lesion_excel = excel_leer.loc[[i+contador]]["Tipo de Lesión"][i+contador]
+		edad_excel = excel_leer.loc[[i+contador]]["Edad"][i+contador]
+		edad_quinquenal_excel = excel_leer.loc[[i+contador]]["Edadquinquenal"][i+contador]
+
+		
+		insercion_tabla_zeus = "(%d,\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",%s,\"%s\"),\n"%((i+contador+1),provincia_excel,canton_excel,distrito_excel,dia_excel,mes_excel,anho_excel,rol_excel,sexo_excel,lesion_excel,edad_excel,edad_quinquenal_excel)
+
+		tabla_total_2_guardar.write(insercion_tabla_zeus)
+
+
+
+	tabla_total_1_guardar.close()
+	tabla_total_2_guardar.close()
+
+
+
+def divirdirArchivo(archivo):
+	archivo_divir = open(archivo, "r")
+	
+	line = archivo_divir.readline()
+	contador_parte = 0
+
+	parte1 = open("parte1_division.txt","w+")
+	parte2 = open("parte2_division.txt","w+")
+	parte3 = open("parte3_division.txt","w+")
+	parte4 = open("parte4_division.txt","w+")
+
+	parte1.write(line)
+	parte2.write(line)
+	parte3.write(line)
+	parte4.write(line)
+
+	line = archivo_divir.readline()
+
+	while line:
+		if (contador_parte == 0):
+			parte1.write(line)
+			contador_parte+=1
+		elif(contador_parte == 1):
+			parte2.write(line)
+			contador_parte+=1
+		elif(contador_parte == 2):
+			parte3.write(line)
+			contador_parte+=1
+		else:
+			parte4.write(line)
+			contador_parte = 0
+		line = archivo_divir.readline()
+
+	parte1.close()
+	parte2.close()
+	parte3.close()
+	parte4.close()
+	archivo_divir.close()
+
+        
+
+
+divirdirArchivo("tabla_dios2.txt")
+   #array = []
+    #for line in ins:
+    #    array.append(line)'''
 #INSERT INTO Dia(codigoDia,nombreDia) VALUES(3,"PRUEBA")
 
 #print(excel_prueba[0])
@@ -203,6 +314,9 @@ def parser_datos_totales_forma2(archivo):
 #parser_datos("provincias","Provincia","Provincia","codigoProvincia,nombreProvincia")
 
 #parser_datos_totales("acc1")
-parser_datos_totales_forma2("acc1")
+#parser_datos_totales_forma2("acc1")
+
+#parser_datos_tabla_completa("acc1")
+#divirdirArchivo("tabla_dios1.txt")
 #print("Column headings:")
 #print(excel_prueba.columns)

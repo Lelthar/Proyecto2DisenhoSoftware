@@ -1,11 +1,14 @@
 package com.example.marlon_pc.projectdesign2.Vista;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +19,19 @@ import android.widget.Toast;
 
 import com.example.marlon_pc.projectdesign2.Controlador.Controlador;
 import com.example.marlon_pc.projectdesign2.Controlador.DTOConsulta;
+import com.example.marlon_pc.projectdesign2.Menu_Principal;
 import com.example.marlon_pc.projectdesign2.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class DinamicaFragment extends Fragment {
     private View rootView;
     private TextView toolbar;
     private Button button;
     private EditText editText;
+
+    private static final String TAG = "MapActivity";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
 
     @Nullable
     @Override
@@ -47,6 +56,9 @@ public class DinamicaFragment extends Fragment {
                     DTOConsulta dto = new DTOConsulta("Dinamica",entrada,null);
                     Controlador controlador = new Controlador();
                     controlador.enviarConsulta(dto);
+
+                    Intent intent = new Intent(getActivity(),MapaConsultaDinamica.class);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(getActivity(),"Ingrese la consulta.",Toast.LENGTH_LONG);
                 }
@@ -55,6 +67,26 @@ public class DinamicaFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+
+    public boolean isServiceOK() {
+        Log.d(TAG, "isServiceOK: checking google services version");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(getActivity());
+
+        if (available == ConnectionResult.SUCCESS) {
+            Log.d(TAG, "isServiceOK: Google services is working");
+            return true;
+        } else if( GoogleApiAvailability.getInstance().isUserResolvableError(available) ) {
+            Log.d(TAG, "isServiceOK: an errror occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(getActivity(),available,ERROR_DIALOG_REQUEST);
+            dialog.show();
+        } else {
+            Log.d(TAG, "isServiceOK: checking google services version");
+        }
+
+        return false;
     }
 
 

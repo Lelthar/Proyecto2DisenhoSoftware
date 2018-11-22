@@ -1,8 +1,10 @@
 package com.example.marlon_pc.projectdesign2;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,10 +22,15 @@ import com.example.marlon_pc.projectdesign2.Modelo.Edad;
 import com.example.marlon_pc.projectdesign2.Modelo.Provincia;
 import com.example.marlon_pc.projectdesign2.Vista.ComportamientoFragment;
 import com.example.marlon_pc.projectdesign2.Vista.DinamicaFragment;
+import com.example.marlon_pc.projectdesign2.Vista.MapaConsultaDinamica;
 import com.example.marlon_pc.projectdesign2.Vista.VacacionesFragment;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class Menu_Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class Menu_Principal extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DinamicaFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_dinamica);
         }
+
 
     }
 
@@ -104,4 +112,5 @@ public class Menu_Principal extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
