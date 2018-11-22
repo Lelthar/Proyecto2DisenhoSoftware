@@ -16,6 +16,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.marlon_pc.projectdesign2.Controlador.DTOConsulta;
+import com.example.marlon_pc.projectdesign2.Modelo.ResultadoConsultaDinamica;
+import com.example.marlon_pc.projectdesign2.Modelo.Ubicacion;
 import com.example.marlon_pc.projectdesign2.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -48,6 +51,8 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
     private boolean mLocationPermissionsGranted = false;
     private GoogleMap mMap;
 
+    private ResultadoConsultaDinamica resultadoConsultaDinamica;
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -60,7 +65,9 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
             }
             mMap.setMyLocationEnabled(true);
 
-            geoLocate();
+            //geoLocate();
+
+            ponerMarcas(resultadoConsultaDinamica);
 
             //mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
@@ -72,10 +79,58 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_consulta_dinamica);
 
+        DTOConsulta dtoConsulta = DinamicaFragment.dtoConsulta;
+
+        resultadoConsultaDinamica = (ResultadoConsultaDinamica) dtoConsulta.getResultado();
+
         getLocationPermission();
 
 
     }
+
+    private Address obtenerLocalizacion(Ubicacion direccion) {
+
+        Geocoder geocoder = new Geocoder(MapaConsultaDinamica.this);
+        List<Address> list = new ArrayList<>();;
+
+        try{
+            list = geocoder.getFromLocationName(direccion.getDireccion(),1);
+
+        }catch (IOException e){
+            list = null;
+        }
+
+        if (list.size() > 0) {
+            Address address = list.get(0);
+
+            return address;
+
+        }
+        return null;
+    }
+
+    private void agregarMarcaMapa (LatLng latLng, String title) {
+
+        MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+
+        mMap.addMarker(options);
+
+    }
+
+    private void ponerMarcas(ResultadoConsultaDinamica resultadoConsultaDinamica) {
+
+
+        for (int i = 0; i < resultadoConsultaDinamica.getUbicaciones().size(); i++) {
+            Ubicacion ubicacion = resultadoConsultaDinamica.getUbicaciones().get(i);
+            Address address = obtenerLocalizacion(ubicacion);
+            String titulo = "Cantidad de accidentes: "+Integer.toString(ubicacion.getCantidad());
+            Log.d(TAG, ubicacion.getDireccion());
+            agregarMarcaMapa(new LatLng(address.getLatitude(),address.getLongitude()),titulo);
+
+        }
+    }
+
+
 
     private void geoLocate() {
         String direccion = "Cachi,Cartago,Costa Rica";

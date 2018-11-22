@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vista.Grafico">
+    tools:context=".Vista.Grafico"
+    android:background="@color/fondoVentanas">
 
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/chart"
                 android:layout_height="match_parent"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:background="@color/fondoVentanas"/>
 
 
 

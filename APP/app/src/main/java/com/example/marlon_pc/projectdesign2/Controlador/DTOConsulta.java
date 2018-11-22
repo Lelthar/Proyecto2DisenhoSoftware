@@ -3,9 +3,10 @@ package com.example.marlon_pc.projectdesign2.Controlador;
 import com.example.marlon_pc.projectdesign2.Modelo.Resultado;
 import com.example.marlon_pc.projectdesign2.Modelo.Sujeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DTOConsulta {
+public class DTOConsulta implements Serializable {
     private String tipo;
     private String entrada;
     private ArrayList<String> anhos;

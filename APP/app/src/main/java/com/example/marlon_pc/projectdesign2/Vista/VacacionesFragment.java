@@ -55,7 +55,7 @@ public class VacacionesFragment extends Fragment  {
 
                 System.out.println("Ejecutar Consulta Vacaciones");
                 sujeto.Imprimir();
-                
+
 
                 Controlador controlador = new Controlador();
                 DTOConsulta dtoConsulta = new DTOConsulta("Vacaciones", "valores", null);

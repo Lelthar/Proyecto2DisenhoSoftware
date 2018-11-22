@@ -24,11 +24,14 @@ import com.example.marlon_pc.projectdesign2.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.io.Serializable;
+
 public class DinamicaFragment extends Fragment {
     private View rootView;
     private TextView toolbar;
     private Button button;
     private EditText editText;
+    public static DTOConsulta dtoConsulta;
 
     private static final String TAG = "MapActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -57,7 +60,10 @@ public class DinamicaFragment extends Fragment {
                     Controlador controlador = new Controlador();
                     controlador.enviarConsulta(dto);
 
+                    dtoConsulta = dto;
+
                     Intent intent = new Intent(getActivity(),MapaConsultaDinamica.class);
+
                     startActivity(intent);
                 }else{
                     Toast.makeText(getActivity(),"Ingrese la consulta.",Toast.LENGTH_LONG);
