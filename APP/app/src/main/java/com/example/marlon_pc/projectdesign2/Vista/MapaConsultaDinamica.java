@@ -27,6 +27,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -92,8 +93,9 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
         if (list.size() > 0) {
             Address address = list.get(0);
 
-            //Toast.makeText(this,address.toString(),Toast.LENGTH_LONG).show();
+            // Toast.makeText(this,address.toString(),Toast.LENGTH_LONG).show();
             Log.d(TAG, address.toString());
+            moveCamera(new LatLng(address.getLatitude(),address.getLongitude()),DEFAULT_ZOOM,address.getAddressLine(0),false);
         }
     }
 
@@ -108,7 +110,7 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
                    public void onComplete(@NonNull Task task) {
                        if (task.isSuccessful()) {
                            Location currentLocation = (Location) task.getResult();
-                           moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),DEFAULT_ZOOM );
+                           moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),DEFAULT_ZOOM ,"Actual posicion",true);
                        } else {
 
                        }
@@ -120,9 +122,16 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
         }
     }
 
-    private void moveCamera (LatLng latLng, float zoom) {
+    private void moveCamera (LatLng latLng, float zoom, String title,boolean actualPosition) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
-    }
+
+        if(!actualPosition) {
+            MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+
+            mMap.addMarker(options);
+        }
+
+;    }
 
     public void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
