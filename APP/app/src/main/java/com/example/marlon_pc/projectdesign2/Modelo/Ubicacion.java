@@ -1,30 +1,21 @@
 package com.example.marlon_pc.projectdesign2.Modelo;
 
 public class Ubicacion {
-    private int latitud;
-    private int longitud;
+
+    private String direccion;
     private int cantidad;
 
-    public Ubicacion(int latitud, int longitud, int cantidad) {
-        this.latitud = latitud;
-        this.longitud = longitud;
+    public Ubicacion(String direccion, int cantidad) {
+        this.direccion = direccion;
         this.cantidad = cantidad;
     }
 
-    public int getLatitud() {
-        return latitud;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setLatitud(int latitud) {
-        this.latitud = latitud;
-    }
-
-    public int getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(int longitud) {
-        this.longitud = longitud;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public int getCantidad() {
@@ -36,12 +27,11 @@ public class Ubicacion {
     }
 
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "Ubicacion{" +
-                "latitud=" + latitud +
-                ", longitud=" + longitud +
+                "direccion='" + direccion + '\'' +
                 ", cantidad=" + cantidad +
                 '}';
     }
-
 }

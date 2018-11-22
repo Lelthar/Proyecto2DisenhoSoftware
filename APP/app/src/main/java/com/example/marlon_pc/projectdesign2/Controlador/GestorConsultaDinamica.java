@@ -15,8 +15,10 @@ import com.example.marlon_pc.projectdesign2.Modelo.Entidad;
 import com.example.marlon_pc.projectdesign2.Modelo.Lesion;
 import com.example.marlon_pc.projectdesign2.Modelo.Mes;
 import com.example.marlon_pc.projectdesign2.Modelo.Provincia;
+import com.example.marlon_pc.projectdesign2.Modelo.ResultadoConsultaDinamica;
 import com.example.marlon_pc.projectdesign2.Modelo.Rol;
 import com.example.marlon_pc.projectdesign2.Modelo.Sexo;
+import com.example.marlon_pc.projectdesign2.Modelo.Ubicacion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,7 +69,20 @@ public class GestorConsultaDinamica implements GestorConsulta{
 
                     }
                 }
-                System.out.println(cantidadResultados);
+                System.out.println("Cantidades: "+cantidadResultados);
+                ArrayList<String> listaDir = obtenerDirecciones();
+                System.out.println("Direcciones:"+listaDir);
+
+                ArrayList<Ubicacion> ubicacions = new ArrayList<>();
+                for(int i=0;i<listaDir.size();i++){
+                    ubicacions.add(new Ubicacion(listaDir.get(i),cantidadResultados.get(i)));
+                }
+                System.out.println(ubicacions);
+
+                ResultadoConsultaDinamica resultaD = new ResultadoConsultaDinamica();
+                resultaD.setUbicaciones(ubicacions);
+
+                dto.setResultado(resultaD);
             }
             //Log.i("Lista Valores:",gestorEntidades.toString());
         }else{
@@ -151,6 +166,94 @@ public class GestorConsultaDinamica implements GestorConsulta{
             System.out.println("UNICO");
         }
         //System.out.println(resultado.toString());
+        return resultado;
+    }
+
+    public ArrayList<String> obtenerDirecciones(){
+        ArrayList<String> resultado = new ArrayList<>();
+
+        if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Provincia")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Provincia")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Provincia")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(obtenerDireccion(entidads));
+            }
+
+        }else if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Cantones")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Cantones")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Cantones")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(obtenerDireccion(entidads));
+            }
+
+        }else if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Distritos")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Distritos")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Distritos")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(obtenerDireccion(entidads));
+            }
+
+        }else{
+            ArrayList<Entidad> lista = gestorEntidades.getListaEntidades();
+            resultado.add(obtenerDireccion(lista));
+        }
+        return resultado;
+    }
+
+    public String obtenerDireccion(ArrayList<Entidad> listaEntidades){
+        String resultado = "";
+        Collections.reverse(listaEntidades);
+        for (Entidad entidad : listaEntidades){
+            if(entidad.getTipo().equals("Distritos")){
+                resultado+=entidad.getValor()+",";
+            }
+            if(entidad.getTipo().equals("Catones")){
+                resultado+=entidad.getValor()+",";
+            }
+            if(entidad.getTipo().equals("Provincia")){
+                resultado+=entidad.getValor()+",";
+            }
+        }
+        resultado+="Costa Rica";
         return resultado;
     }
 
