@@ -36,8 +36,7 @@ public class Controlador {
     public void enviarConsulta(DTOConsulta dto){
         switch (dto.getTipo()){
             case "Dinamica":
-                String a = gestorConsultaDinamica.efectuarConsulta(dto);
-                System.out.println(a);
+                gestorConsultaDinamica.efectuarConsulta(dto);
                 break;
             case "Comportamiento":
                 gestorConsultaComportamiento.efectuarConsulta(dto);

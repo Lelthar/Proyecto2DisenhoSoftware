@@ -46,28 +46,28 @@ public class GestorConsultaDinamica implements GestorConsulta{
     public String efectuarConsulta(DTOConsulta dto) {
         if(gestorEntidades.obtenerEntidades(dto.getEntrada())){
             if(validar()){
-                Consulta consul = construirConsulta();
-                String valores = consultar(consul);
-
-                if(!valores.equals("Error")){
+                ArrayList<Consulta> lista = obtenerConsultas();
+                ArrayList<Integer> cantidadResultados = new ArrayList<>();
+                for(Consulta consulta : lista){
+                    String valores = consultar(consulta);
                     //System.out.println(valores);
-                    /*
-                    try {
-                        JSONObject JsonObjecto = new JSONObject(valores);
-                        String cantidadJson = JsonObjecto.getString("value");
+                    if(!valores.equals("Error")){
+                        JSONObject JsonObjecto = null;
+                        try {
+                            JsonObjecto = new JSONObject(valores);
+                            String cantidadJson = JsonObjecto.getString("value");
 
-                        JSONArray datos = new JSONArray(cantidadJson);
-                        int cantidad = Integer.parseInt(datos.getJSONObject(0).getString("COUNT(*)"));
+                            JSONArray datos = new JSONArray(cantidadJson);
+                            int cantidad = Integer.parseInt(datos.getJSONObject(0).getString("COUNT(codigoRegistro)"));
+                            cantidadResultados.add(cantidad);
 
-                        System.out.println(cantidad);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
-                    */
-                }else{
-                    return "Problema BD";
                 }
-
+                System.out.println(cantidadResultados);
             }
             //Log.i("Lista Valores:",gestorEntidades.toString());
         }else{
@@ -78,7 +78,96 @@ public class GestorConsultaDinamica implements GestorConsulta{
 
     @Override
     public Consulta construirConsulta() {
-        ArrayList<Entidad> lista = gestorEntidades.getListaEntidades();
+
+        return  null;
+    }
+
+    public ArrayList<Consulta> obtenerConsultas(){
+        ArrayList<Consulta> resultado = new ArrayList<>();
+
+        if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Provincia")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Provincia")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Provincia")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(construirConsultaIndividual(entidads));
+            }
+
+        }else if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Cantones")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Cantones")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Cantones")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(construirConsultaIndividual(entidads));
+            }
+
+        }else if(cantidadIndicadores(this.gestorEntidades.getListaEntidades(),"Distritos")>1){
+            ArrayList<ArrayList<Entidad>> listaEntidades = new ArrayList<>();
+            for(Entidad entidad : this.gestorEntidades.getListaEntidades()){
+                ArrayList<Entidad> entidades = new ArrayList<>();
+                if(entidad.getTipo().equals("Distritos")){
+                    entidades.add(entidad);
+                    for(Entidad entidad1 : this.gestorEntidades.getListaEntidades()){
+                        if(!entidad1.getTipo().equals("Distritos")){
+                            entidades.add(entidad1);
+                        }
+                    }
+                    listaEntidades.add(entidades);
+                }
+            }
+
+            for(ArrayList<Entidad> entidads : listaEntidades){
+                entidads = ordenarResultados(entidads);
+                resultado.add(construirConsultaIndividual(entidads));
+            }
+
+        }else{
+            ArrayList<Entidad> lista = gestorEntidades.getListaEntidades();
+            resultado.add(construirConsultaIndividual(lista));
+            System.out.println("UNICO");
+        }
+        //System.out.println(resultado.toString());
+        return resultado;
+    }
+
+    public ArrayList<Entidad> ordenarResultados(ArrayList<Entidad> listaEntidades){
+        ArrayList<Entidad> result = new ArrayList<>();
+        String[] categorias = {"Provincia", "Cantones", "Distritos","Anho","Mes","Dia","Rol","Genero","TipoLesion","Edad"};
+        for(int i=0;i<categorias.length;i++){
+            for(Entidad entidad : listaEntidades){
+                if(entidad.getTipo().equals(categorias[i])){
+                    result.add(entidad);
+                }
+            }
+        }
+        return listaEntidades;
+    }
+
+    public Consulta construirConsultaIndividual(ArrayList<Entidad> lista){
         Collections.reverse(lista);
         Consulta con = null;
         boolean state = false;
@@ -86,7 +175,6 @@ public class GestorConsultaDinamica implements GestorConsulta{
         String anterior = "";
         int cont =0;
         for(Entidad entidad : lista){
-
             if(cont == lista.size()-1){
                 ultimo=true;
             }
@@ -262,14 +350,14 @@ public class GestorConsultaDinamica implements GestorConsulta{
     public String consultar(Consulta consulta) {
 
         String a = consulta.agregar("");
-        System.out.println(a);
+        //System.out.println(a);
         a = a.replaceAll(" ","%20");
 
         Conexion conexion = new Conexion();
         try {
             String consult = "https://villalobosmartinezjosedavid.000webhostapp.com/consultas/consulta.php?valor="+a;
             String resp = conexion.execute(consult,"GET").get ();
-            System.out.println(resp);
+            //System.out.println(resp);
             return resp;
             //Toast.makeText(getApplication(),resp,Toast.LENGTH_LONG).show();
         } catch (ExecutionException e) {
@@ -280,8 +368,23 @@ public class GestorConsultaDinamica implements GestorConsulta{
         return "Error";
     }
 
-
+    /**
+     * Validar:
+     *      No existan cantones si hay 2 o más provincias
+     *      No existan distritos si hay 2 o más cantones
+     * @return
+     */
     public boolean validar(){
         return true;
+    }
+
+    public int cantidadIndicadores(ArrayList<Entidad> entidades,String tipo){
+        int result =0;
+        for(Entidad entidad : entidades){
+            if(entidad.getTipo().equals(tipo)){
+                result++;
+            }
+        }
+        return result;
     }
 }
