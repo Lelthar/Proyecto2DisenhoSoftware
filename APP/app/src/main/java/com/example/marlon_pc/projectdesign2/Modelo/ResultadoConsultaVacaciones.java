@@ -6,11 +6,9 @@ public class ResultadoConsultaVacaciones extends Resultado {
 
 
     private ArrayList<Periodo> periodos;
-    String resultado;
 
-    public ResultadoConsultaVacaciones(ArrayList<Periodo> periodos, String resultado) {
-        this.periodos = new ArrayList<>();
-        this.resultado = resultado;
+    public ResultadoConsultaVacaciones(ArrayList<Periodo> periodos) {
+        this.periodos = periodos;
     }
 
     public ArrayList<Periodo> getPeriodos() {
