@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.media.AudioRecord;
 import android.support.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.marlon_pc.projectdesign2.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -24,13 +27,17 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapReadyCallback{
 
     private static final String TAG = "MapActivity";
-
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
@@ -52,6 +59,9 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
                 return;
             }
             mMap.setMyLocationEnabled(true);
+
+            geoLocate();
+
             //mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
         }
@@ -67,6 +77,28 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
 
     }
 
+    private void geoLocate() {
+        String direccion = "Cachi,Cartago,Costa Rica";
+
+        Geocoder geocoder = new Geocoder(MapaConsultaDinamica.this);
+        List<Address> list = new ArrayList<>();;
+
+        try{
+            list = geocoder.getFromLocationName(direccion,1);
+
+        }catch (IOException e){
+
+        }
+
+        if (list.size() > 0) {
+            Address address = list.get(0);
+
+            // Toast.makeText(this,address.toString(),Toast.LENGTH_LONG).show();
+            Log.d(TAG, address.toString());
+            moveCamera(new LatLng(address.getLatitude(),address.getLongitude()),DEFAULT_ZOOM,address.getAddressLine(0),false);
+        }
+    }
+
     private void getDeviceLocation() {
         fusedLocationProviderCliente = LocationServices.getFusedLocationProviderClient(this);
 
@@ -78,7 +110,7 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
                    public void onComplete(@NonNull Task task) {
                        if (task.isSuccessful()) {
                            Location currentLocation = (Location) task.getResult();
-                           moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),DEFAULT_ZOOM );
+                           moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),DEFAULT_ZOOM ,"Actual posicion",true);
                        } else {
 
                        }
@@ -90,9 +122,16 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
         }
     }
 
-    private void moveCamera (LatLng latLng, float zoom) {
+    private void moveCamera (LatLng latLng, float zoom, String title,boolean actualPosition) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
-    }
+
+        if(!actualPosition) {
+            MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+
+            mMap.addMarker(options);
+        }
+
+;    }
 
     public void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);

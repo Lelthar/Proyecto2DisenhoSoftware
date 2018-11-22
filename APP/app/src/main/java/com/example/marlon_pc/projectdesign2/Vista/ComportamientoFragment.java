@@ -22,7 +22,8 @@ import java.util.ArrayList;
 
 public class ComportamientoFragment extends Fragment {
     private View rootView;
-    private static final String[] categorias = {"Provincias", "Cantones", "Distritos","Meses","Anhos","Dias","Sexos","Lesiones","Roles"};
+    //private static final String[] categorias = {"Provincias", "Cantones", "Distritos","Meses","Anhos","Dias","Sexos","Lesiones","Roles"};
+    private static final String[] categorias = {"Provincia", "Canton", "Distrito","Mes","Anho","Dia","Sexo","Lesion","Rol"};
     private Spinner spinner;
     private Button button;
 
@@ -49,6 +50,7 @@ public class ComportamientoFragment extends Fragment {
                 DTOConsulta dto = new DTOConsulta("Comportamiento",entrada,null);
                 Controlador controlador = new Controlador();
                 controlador.enviarConsulta(dto);
+                System.out.println(dto.getResultado().toString());
             }
         });
 
