@@ -260,6 +260,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
 
     @Override
     public String consultar(Consulta consulta) {
+
         String a = consulta.agregar("");
         System.out.println(a);
         a = a.replaceAll(" ","%20");

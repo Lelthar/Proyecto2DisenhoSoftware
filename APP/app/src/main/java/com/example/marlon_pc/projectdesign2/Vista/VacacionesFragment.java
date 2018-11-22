@@ -18,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 
 import com.example.marlon_pc.projectdesign2.Controlador.Controlador;
+import com.example.marlon_pc.projectdesign2.Controlador.DTOConsulta;
 import com.example.marlon_pc.projectdesign2.Modelo.*;
 import com.example.marlon_pc.projectdesign2.R;
 
@@ -51,11 +52,13 @@ public class VacacionesFragment extends Fragment  {
             public void onClick(View v) {
 
 
-
-
                 System.out.println("Ejecutar Consulta Vacaciones");
-                Consulta consultaVacaciones  = new ConsultaVacaciones();
                 sujeto.Imprimir();
+
+                Controlador controlador = new Controlador();
+                DTOConsulta dtoConsulta = new DTOConsulta("Vacaciones", "valores", null);
+                dtoConsulta.setSujeto(sujeto);
+                controlador.enviarConsulta(dtoConsulta);
 
 
             }

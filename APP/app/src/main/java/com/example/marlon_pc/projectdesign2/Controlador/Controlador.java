@@ -1,12 +1,15 @@
 package com.example.marlon_pc.projectdesign2.Controlador;
 
 public class Controlador {
+
     private GestorConsultaDinamica gestorConsultaDinamica;
     private GestorConsultaComportamiento gestorConsultaComportamiento;
+    private GestorConsultaVacaciones gestorConsultaVacaciones;
 
     public Controlador() {
         this.gestorConsultaDinamica = new GestorConsultaDinamica();
         this.gestorConsultaComportamiento = new GestorConsultaComportamiento();
+        this.gestorConsultaVacaciones =  new GestorConsultaVacaciones();
     }
 
     public GestorConsultaDinamica getGestorConsultaDinamica() {
@@ -40,6 +43,8 @@ public class Controlador {
                 gestorConsultaComportamiento.efectuarConsulta(dto);
                 break;
             case "Vacaciones":
+                this.gestorConsultaVacaciones.efectuarConsulta(dto);
+
 
                 break;
              default:

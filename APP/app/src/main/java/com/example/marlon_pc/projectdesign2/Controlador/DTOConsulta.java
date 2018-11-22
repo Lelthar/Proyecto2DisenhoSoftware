@@ -1,6 +1,7 @@
 package com.example.marlon_pc.projectdesign2.Controlador;
 
 import com.example.marlon_pc.projectdesign2.Modelo.Resultado;
+import com.example.marlon_pc.projectdesign2.Modelo.Sujeto;
 
 import java.util.ArrayList;
 
@@ -9,12 +10,17 @@ public class DTOConsulta {
     private String entrada;
     private ArrayList<String> anhos;
     private Resultado resultado;
+    private Sujeto sujeto;
 
     public DTOConsulta(String tipo, String entrada, ArrayList<String> anhos) {
         this.tipo = tipo;
         this.entrada = entrada;
         this.anhos = anhos;
         //this.resultado = new Resultado();
+    }
+
+    public void setSujeto(Sujeto sujeto){
+        this.sujeto = sujeto;
     }
 
     public String getTipo() {

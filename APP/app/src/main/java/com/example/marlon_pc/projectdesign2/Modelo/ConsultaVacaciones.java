@@ -15,6 +15,7 @@ public class ConsultaVacaciones implements Consulta {
 
     @Override
     public String agregar(String valor){
+
         return null;
     }
     
