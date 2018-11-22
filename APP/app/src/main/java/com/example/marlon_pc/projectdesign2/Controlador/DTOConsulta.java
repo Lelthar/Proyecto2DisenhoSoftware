@@ -23,6 +23,10 @@ public class DTOConsulta {
         this.sujeto = sujeto;
     }
 
+    public Sujeto getSujeto(){
+        return this.sujeto;
+    }
+
     public String getTipo() {
         return tipo;
     }

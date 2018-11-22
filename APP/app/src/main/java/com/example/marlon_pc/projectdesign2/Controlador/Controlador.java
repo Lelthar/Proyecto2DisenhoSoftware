@@ -43,10 +43,9 @@ public class Controlador {
                 gestorConsultaComportamiento.efectuarConsulta(dto);
                 break;
             case "Vacaciones":
-                this.gestorConsultaVacaciones.efectuarConsulta(dto);
-
-
+                String resultado = this.gestorConsultaVacaciones.efectuarConsulta(dto);
                 break;
+
              default:
                  break;
         }

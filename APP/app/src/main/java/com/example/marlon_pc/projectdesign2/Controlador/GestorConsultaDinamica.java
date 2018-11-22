@@ -280,12 +280,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
         return "Error";
     }
 
-    /**
-     * Validar:
-     *      No existan cantones si hay 2 o más provincias
-     *      No existan distritos si hay 2 o más cantones
-     * @return
-     */
+
     public boolean validar(){
         return true;
     }
