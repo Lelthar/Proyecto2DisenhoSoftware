@@ -67,7 +67,13 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
 
             //geoLocate();
 
-            ponerMarcas(resultadoConsultaDinamica);
+            if (resultadoConsultaDinamica != null) {
+                ponerMarcas(resultadoConsultaDinamica);
+            } else {
+                Toast.makeText(this,"Error: No se pudo mostrar los datos.",Toast.LENGTH_LONG).show();
+            }
+
+
 
             //mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
@@ -79,13 +85,24 @@ public class MapaConsultaDinamica extends AppCompatActivity implements  OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_consulta_dinamica);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         DTOConsulta dtoConsulta = DinamicaFragment.dtoConsulta;
 
-        resultadoConsultaDinamica = (ResultadoConsultaDinamica) dtoConsulta.getResultado();
+        if (dtoConsulta != null) {
+            resultadoConsultaDinamica = (ResultadoConsultaDinamica) dtoConsulta.getResultado();
+        }
 
         getLocationPermission();
 
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private Address obtenerLocalizacion(Ubicacion direccion) {

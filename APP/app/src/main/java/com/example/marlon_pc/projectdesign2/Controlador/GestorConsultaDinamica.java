@@ -459,7 +459,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
         Conexion conexion = new Conexion();
         try {
             String consult = "https://villalobosmartinezjosedavid.000webhostapp.com/consultas/consulta.php?valor="+a;
-            String resp = conexion.execute(consult,"GET").get ();
+            String resp = conexion.execute(consult,"GET").get();
             //System.out.println(resp);
             return resp;
             //Toast.makeText(getApplication(),resp,Toast.LENGTH_LONG).show();

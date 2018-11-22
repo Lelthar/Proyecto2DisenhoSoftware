@@ -1,6 +1,7 @@
 package com.example.marlon_pc.projectdesign2.Vista;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,6 +34,7 @@ public class VacacionesFragment extends Fragment  {
     private Spinner spinner_anhos;
     private Controlador controlador;
     private Sujeto sujeto ;
+    public static DTOConsulta dtoConsulta_actual;
 
     @Nullable
     @Override
@@ -61,6 +63,18 @@ public class VacacionesFragment extends Fragment  {
                 DTOConsulta dtoConsulta = new DTOConsulta("Vacaciones", "valores", null);
                 dtoConsulta.setSujeto(sujeto);
                 controlador.enviarConsulta(dtoConsulta);
+
+                dtoConsulta_actual = dtoConsulta;
+
+                if (dtoConsulta.getResultado() != null) {
+                    Intent intent = new Intent(getActivity(),Grafico.class);
+
+                    intent.putExtra("NUMERO",2);
+
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(),"Error: No se puede mostrar los datos.",Toast.LENGTH_LONG).show();
+                }
 
 
             }

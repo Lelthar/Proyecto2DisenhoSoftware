@@ -27,6 +27,7 @@ public class ComportamientoFragment extends Fragment {
     private static final String[] categorias = {"Provincia", "Canton", "Distrito","Mes","Anho","Dia","Sexo","Lesion","Rol"};
     private Spinner spinner;
     private Button button;
+    public static DTOConsulta dtoConsulta_actual;
 
     @Nullable
     @Override
@@ -52,7 +53,13 @@ public class ComportamientoFragment extends Fragment {
                 Controlador controlador = new Controlador();
                 controlador.enviarConsulta(dto);
                 System.out.println(dto.getResultado().toString());
+
+                dtoConsulta_actual = dto;
+
                 Intent intent = new Intent(getActivity(),Grafico.class);
+
+                intent.putExtra("NUMERO",1);
+
                 startActivity(intent);
             }
         });
