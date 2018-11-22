@@ -15,7 +15,7 @@ public class ConsultaComportamiento implements Consulta {
 
     @Override
     public String agregar(String valor){
-        return valor;
+        return "SELECT nombre"+valor+",COUNT(codigoRegistro) FROM IncidenteCompleto GROUP BY nombre"+valor+";";
     }
     
     
