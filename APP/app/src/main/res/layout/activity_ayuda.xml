@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vista.Ayuda"
+    android:background="@color/fondoVentanas">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titulo_parte1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:text="Consulta Dinámica"
+                android:textColor="#6b5e4e"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_below="@+id/titulo_parte1"
+                android:id="@+id/titulo_parte2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Ejemplo de entrada de datos: 'Por ejemplo, se podría seleccionar Alajuela y Heredia como provincias y estar interesado en ver los accidentes de tránsito que involucraron Ciclista en el rol de afectado que salieron Herido leve en el tipo de lesión y que fueron Mujer en el indicador de sexo para el año 2013.'"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/titulo_parte3"
+                android:layout_below="@+id/titulo_parte2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Luego se necesita ejecutar la consulta presionando el botón. Siguiente a esto, se mostrarán los puntos en el mapa que cumplan con la consulta."
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/titulo_parte4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/titulo_parte3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:text="Consulta Comportamiento"
+                android:textColor="#6b5e4e"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_below="@+id/titulo_parte4"
+                android:id="@+id/titulo_parte5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="En este caso, se debe seleccionar una opción de la lista de categorias con las que cuenta la aplicación. Luego se presiona el botón para mostrar los datos en un grafico."
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/titulo_parte6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/titulo_parte5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:text="Consulta Vacaciones"
+                android:textColor="#6b5e4e"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_below="@+id/titulo_parte6"
+                android:id="@+id/titulo_parte7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Se debe seleccionar por lo menos un año y un periodo. Luego de realizar esto, se debe presionar el botón para  poder mostrar un grafico con los datos seleccionados."
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="20dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -6,7 +6,7 @@
     <string name="nav_header_title">Crash</string>
     <string name="nav_header_subtitle">Consultas:</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Ayuda</string>
 
     <string name="google_maps_API_key">AIzaSyCL0ClJ1Afsh8m0fJt34EhEFZTnBViuUTc</string>
 </resources>

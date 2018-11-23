@@ -37,7 +37,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Vista.MapaConsultaDinamica" />
-        <activity android:name=".Vista.Grafico"></activity>
+        <activity android:name=".Vista.Grafico" />
+        <activity android:name=".Vista.Ayuda"></activity>
     </application>
 
 </manifest>

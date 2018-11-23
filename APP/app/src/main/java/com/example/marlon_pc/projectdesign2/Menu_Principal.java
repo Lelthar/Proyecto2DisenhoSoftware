@@ -1,6 +1,7 @@
 package com.example.marlon_pc.projectdesign2;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import com.example.marlon_pc.projectdesign2.Modelo.Consulta;
 import com.example.marlon_pc.projectdesign2.Modelo.ConsultaDinamica;
 import com.example.marlon_pc.projectdesign2.Modelo.Edad;
 import com.example.marlon_pc.projectdesign2.Modelo.Provincia;
+import com.example.marlon_pc.projectdesign2.Vista.Ayuda;
 import com.example.marlon_pc.projectdesign2.Vista.ComportamientoFragment;
 import com.example.marlon_pc.projectdesign2.Vista.DinamicaFragment;
 import com.example.marlon_pc.projectdesign2.Vista.MapaConsultaDinamica;
@@ -83,6 +85,9 @@ public class Menu_Principal extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this,Ayuda.class);
+
+            startActivity(intent);
             return true;
         }
 
