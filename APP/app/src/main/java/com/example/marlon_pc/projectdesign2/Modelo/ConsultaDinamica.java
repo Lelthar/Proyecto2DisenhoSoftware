@@ -16,6 +16,7 @@ public class ConsultaDinamica implements Consulta {
 
     @Override
     public String agregar(String valor) {
-        return "SELECT nombreProvincia,COUNT(codigoRegistro) FROM IncidenteCompleto WHERE("+valor+") GROUP BY nombreProvincia;";
+        return "SELECT codigoRegistro,COUNT(codigoRegistro) FROM IncidenteCompleto WHERE("+valor+") GROUP BY codigoRe+" +
+                "gistro;";
     }
 }

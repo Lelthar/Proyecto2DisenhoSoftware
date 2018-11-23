@@ -57,11 +57,17 @@ public class GestorConsultaDinamica implements GestorConsulta{
                         JSONObject JsonObjecto = null;
                         try {
                             JsonObjecto = new JSONObject(valores);
-                            String cantidadJson = JsonObjecto.getString("value");
+                            System.out.println(valores);
+                            if(!JsonObjecto.has("value")){
+                                cantidadResultados.add(0);
+                            }else{
+                                String cantidadJson = JsonObjecto.getString("value");
 
-                            JSONArray datos = new JSONArray(cantidadJson);
-                            int cantidad = Integer.parseInt(datos.getJSONObject(0).getString("COUNT(codigoRegistro)"));
-                            cantidadResultados.add(cantidad);
+                                JSONArray datos = new JSONArray(cantidadJson);
+                                int cantidad = Integer.parseInt(datos.getJSONObject(0).getString("COUNT(codigoRegistro)"));
+                                cantidadResultados.add(cantidad);
+                            }
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -453,7 +459,7 @@ public class GestorConsultaDinamica implements GestorConsulta{
     public String consultar(Consulta consulta) {
 
         String a = consulta.agregar("");
-        //System.out.println(a);
+        System.out.println(a);
         a = a.replaceAll(" ","%20");
 
         Conexion conexion = new Conexion();
